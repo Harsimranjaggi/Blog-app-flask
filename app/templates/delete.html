@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Delete Post Confirmation</title>
+</head>
+<body>
+  <h1>Delete Post Confirmation</h1>
+  <p>Are you sure you want to delete the post titled "{{ post.title }}"? This action cannot be undone.</p>
+
+  <form method="POST">
+    {% with csrf_token() as token %}
+      <input type="hidden" name="csrf_token" value="{{ token }}">
+    {% endwith %}
+    <button type="submit" class="btn btn-danger">Yes, Delete</button>
+    <a href="{{ url_for('index') }}" class="btn btn-secondary">Cancel</a>
+  </form>
+</body>
+</html>
